@@ -9,7 +9,7 @@ export default function SideBarBody({ children }: Props) {
     <div>
       <aside
         id="logo-sidebar"
-        className="fixed top-0 left-0 z-40 w-64 pt-20 h-screen transition-transform -translate-x-full bg-stone-600 border-r border-gray-200 sm:translate-x-0 dark:bg-gray-800 dark:border-gray-700"
+        className="fixed top-0 left-0 z-40 w-64 pt-20 h-screen transition-transform -translate-x-full bg-stone-600 border-r border-gray-200 sm:translate-x-0 "
         aria-label="Sidebar"
       >
         {/* Replace the <p> tag with an <img> tag for your logo */}
@@ -20,13 +20,13 @@ export default function SideBarBody({ children }: Props) {
           style={{ maxWidth: "20%", borderRadius: 20 }} // Adjust the size as needed
         />
 
-        <div className="h-full px-3 pb-4 overflow-y-auto mt-5 bg-white dark:bg-gray-800">
+        <div className="h-full px-3 pb-4 overflow-y-auto mt-5 bg-white ">
           <ul className="space-y-2 font-medium">{children}</ul>
         </div>
       </aside>
 
-      <footer className="fixed bottom-0 left-0 z-40 w-full h-16 bg-white border-t border-gray-200 sm:hidden dark:bg-gray-800 dark:border-gray-700">
-        <div className="h-full px-3 pt-4 overflow-x-auto bg-white dark:bg-gray-800">
+      <footer className="fixed bottom-0 left-0 z-40 w-full h-16 bg-white border-t border-gray-200 sm:hidden ">
+        <div className="h-full px-3 pt-4 overflow-x-auto bg-white ">
           <ul className="flex justify-center space-x-4 font-medium">
             {children}
           </ul>

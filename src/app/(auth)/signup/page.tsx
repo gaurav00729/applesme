@@ -54,10 +54,14 @@ export default function SignUp() {
             sessionStorage.setItem("user_email", email);
             showToast("OTP Sent", { type: "success" });
             navigateToEnterOTP();
-          } else {
+          } else if( response?.user_status == "active_user") {
             showToast("Account already present! Please Login!", {
               type: "error",
             });
+            sessionStorage.removeItem("user_status");
+            sessionStorage.removeItem("user_email");
+            navigateToEnterOTP();
+          }else{
             sessionStorage.removeItem("user_status");
             sessionStorage.removeItem("user_email");
             navigateToEnterOTP();
@@ -90,7 +94,7 @@ export default function SignUp() {
   });
 
   return (
-    <section className="bg-white dark:bg-gray-900">
+    <section className="bg-white ">
       <div className="flex flex-row justify-between">
         <div className="w-full md:w-1/2 hidden md:block">
           <div className="bg-gray-200 h-screen flex items-center justify-center">
@@ -111,7 +115,7 @@ export default function SignUp() {
               objectFit="cover"
               className="cursor-pointer transfor  "
             />
-            <p className="my-4 text-lg  font-bold  text-gray-900 dark:text-white">
+            <p className="my-4 text-lg  font-bold  text-gray-900 ">
               Apple SME Lease Program
             </p>
           </div>
@@ -119,7 +123,7 @@ export default function SignUp() {
           <div className=" px-20">
             <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-6 border border-gray-500 rounded-2xl ">
               <div className=" flex w-full justify-center items-center">
-                <h2 className="mb-2 text-xl font-bold text-gray-900 dark:text-white">
+                <h2 className="mb-2 text-xl font-bold text-gray-900 ">
                   Sign Up
                 </h2>
               </div>
@@ -159,7 +163,7 @@ export default function SignUp() {
                       <button
                         disabled
                         type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800 inline-flex items-center"
+                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
                       >
                         <LoadingIcon />
                         Loading...
@@ -167,14 +171,14 @@ export default function SignUp() {
                     ) : (
                       <button
                         type="submit"
-                        className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center"
                       >
                         Submit
                       </button>
                     )}
                   </div>
                   <div className="flex justify-center items-center">
-                    <p className="my-4  text-base font-medium text-gray-900 dark:text-white">
+                    <p className="my-4  text-base font-medium text-gray-900">
                       Already have a account? Login
                     </p>
                   </div>
