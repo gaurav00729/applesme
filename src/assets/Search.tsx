@@ -1,6 +1,6 @@
 import * as React from "react";
 
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
+// eslint-disable-next-line 
 interface Props extends React.SVGProps<SVGSVGElement> {
   size: number;
 }

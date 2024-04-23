@@ -39,7 +39,7 @@ export default function SignUp() {
     ({ business_name, business_type, email, mobile }: typeof INTIAL_VALUES) => {
       return makeApiCall(SignupApi(business_name, business_type, email, mobile))
         .then((response) => {
-          console.log(response,"RESPONSE OF SIGNUP")
+          console.log(response, "RESPONSE OF SIGNUP");
           const { token }: { token: string } = response;
           const decode: User = jwtDecode(token);
           localStorage.setItem("authToken", token);
@@ -59,16 +59,16 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken]
+    [navigateToHomePage, setAuthToken, makeApiCall, setUser]
   );
 
   const validationSchema = Yup.object().shape({
-    business_name : Yup.string().required("Business Name is required"),
+    business_name: Yup.string().required("Business Name is required"),
     mobile: Yup.string().required("Mobile Number is required"),
     email: Yup.string()
       .email("Invalid  email format")
       .required(" Email is required"),
-      business_type: Yup.string().required("Business Type is required"),
+    business_type: Yup.string().required("Business Type is required"),
   });
 
   return (

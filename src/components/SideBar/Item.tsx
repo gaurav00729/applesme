@@ -3,7 +3,7 @@ import Link from "next/link";
 
 interface Props {
   href?: string;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  // eslint-disable-next-line 
   startContent?: React.ReactElement;
   children?: string;
 }

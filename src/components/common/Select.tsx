@@ -21,7 +21,7 @@ export default function Select({
   onSelect,
   ...props
 }: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line 
   const [field, meta, helpers] = useField(name);
 
   const onChange = React.useCallback(

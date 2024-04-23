@@ -43,7 +43,7 @@ const FileInput: React.FC<Props> = ({
 
   const fileInputRef = React.useRef<HTMLInputElement | null>(null);
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line 
   const [field, meta, helpers] = useField(name);
 
   const handleFiles = React.useCallback(

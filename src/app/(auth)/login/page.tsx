@@ -55,7 +55,7 @@ export default function SignUp() {
 
   const toggleForgetPassword = React.useCallback(() => {
     setPassword(true);
-  }, [router]);
+  }, []);
 
   const handleLoginSubmit = React.useCallback(
     ({
@@ -84,7 +84,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken]
+    [navigateToHomePage, setAuthToken, makeApiCall, setUser]
   );
 
   const validationloginSchema = Yup.object().shape({
@@ -113,7 +113,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken]
+    [makeApiCall]
   );
 
   const validationSchemaSendOtp = Yup.object().shape({
@@ -154,7 +154,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage]
+    [navigateToHomePage, makeApiCall, userEmail]
   );
 
   const validationSchema = Yup.object().shape({

@@ -6,7 +6,7 @@ export default function useApi() {
   const router = useRouter();
 
   const makeApiCall = React.useCallback(
-    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    // eslint-disable-next-line 
     (promise: Promise<AxiosResponse<any, any>>) => {
       return promise
         .then((response: AxiosResponse) => response.data)

@@ -23,7 +23,7 @@ export default function Input({
   labelPlacement = "outside",
   className,
 }: Props) {
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  // eslint-disable-next-line 
   const [field, meta, helpers] = useField(name);
 
   const handleChange = React.useCallback(
