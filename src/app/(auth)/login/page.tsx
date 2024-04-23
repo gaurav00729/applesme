@@ -122,14 +122,25 @@ export default function SignUp() {
       return makeApiCall(SendForgetPasswordOtpApi(email))
         .then((response) => {
           console.log(response, "RESPONSE OF FORGET PASSWORD OTP ENDING");
-          if (response?.status == 200) {
+          if (response != undefined && response?.status == true) {
+            showToast(
+              response?.message && response?.message != ""
+                ? response?.message
+                : "Sent",
+              { type: "success" }
+            );
             setOtpSent(true);
           }
           return true;
         })
         .catch((error) => {
-          setOtpSent(true);
-
+          showToast(
+            error?.response?.data?.message &&
+              error?.response?.data?.message != ""
+              ? error?.response?.data?.message
+              : "Error occurreds",
+            { type: "error" }
+          );
           console.error("Login Error:- ", error);
           return false;
         })
@@ -160,21 +171,30 @@ export default function SignUp() {
       )
         .then((response) => {
           console.log(response, "RESPONSE OF CONFIRM  PASSWORD AFTER OTP");
-          const { token }: { token: string } = response;
-          const decode: User = jwtDecode(token);
-          localStorage.setItem("authToken", token);
-          localStorage.setItem("user_id", `${decode.user_id}`);
-          localStorage.setItem("email", decode.email);
-          localStorage.setItem("name", decode.name);
-          setUser(decode);
-          setAuthToken(token);
-          if (token) {
-            navigateToHomePage();
-          }
+          if (response != undefined) {
+            const { token }: { token: string } = response;
+            const decode: User = jwtDecode(token);
+            localStorage.setItem("authToken", token);
+            localStorage.setItem("user_id", `${decode.user_id}`);
+            localStorage.setItem("email", decode.email);
+            localStorage.setItem("name", decode.name);
+            setUser(decode);
+            setAuthToken(token);
+            if (token) {
+              navigateToHomePage();
+            }
 
-          return true;
+            return true;
+          }
         })
         .catch((error) => {
+          showToast(
+            error?.response?.data?.message &&
+              error?.response?.data?.message != ""
+              ? error?.response?.data?.message
+              : "Error occurreds",
+            { type: "error" }
+          );
           console.error("Login Error:- ", error);
           return false;
         })
