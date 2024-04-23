@@ -70,13 +70,17 @@ export default function SignUp() {
       return makeApiCall(LoginApi(email, password))
         .then((response) => {
           console.log(response, "RESPONSE OF LOGIN API");
-          if (response != undefined && response?.status == true) {
+          if (response != undefined) {
+            console.log(response, "INSIDE");
             const { token }: { token: string } = response;
             const decode: User = jwtDecode(token);
+            console.log(decode, "decodee");
+
             localStorage.setItem("authToken", token);
             localStorage.setItem("user_id", `${decode.user_id}`);
             localStorage.setItem("email", decode.email);
             localStorage.setItem("name", decode.name);
+
             setUser(decode);
             setAuthToken(token);
             if (token) {
@@ -89,7 +93,6 @@ export default function SignUp() {
           return true;
         })
         .catch((error) => {
-          showToast("Failed", { type: "error" });
           console.error("Login Error:- ", error);
           showToast(
             error?.response?.data?.message &&
