@@ -11,5 +11,3 @@ module.exports = {
     serverActions: true,
   },
 };
-
-module.exports = nextConfig;
