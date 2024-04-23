@@ -1,13 +1,7 @@
-/** @type {import('next').NextConfig} */
-const nextConfig = {
-  output: "export",
-};
+ /** @type {import('next').NextConfig} */
+ const nextConfig = {
+  output: "export", // lightweight but no dynamic routes & api support
+  // output: "standalone", // bulkier but supports dynamic routes & api
+}
 
-module.exports = {
-  images: {
-    domains: ["encrypted-tbn0.gstatic.com"],
-  },
-  experimental: {
-    serverActions: true,
-  },
-};
+module.exports = nextConfig
