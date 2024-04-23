@@ -7,10 +7,7 @@ import Input from "@/components/common/Input";
 import Spacer from "@/components/common/Spacer";
 import { LoadingIcon } from "@/assets/images/Loading";
 import { useRouter } from "next/navigation";
-import Select from "@/components/common/Select";
-import { SelectType } from "@/types";
 import useStore from "@/store";
-import banner from "../../../assets/images/banner.svg";
 import logo from "../../../assets/images/logocrpl.svg";
 import Image from "next/image";
 import {
@@ -21,7 +18,7 @@ import {
 import useApi from "@/hooks/useApi";
 import { jwtDecode } from "jwt-decode";
 import { User } from "@/types";
-import { nextLocalStorage } from "@/utils/nextLocalStorage";
+import { nextLocalStorage, nextSessionStorage } from "@/utils/nextLocalStorage";
 import useToast from "@/hooks/useToast";
 
 const INTIAL_VALUESLOGIN = {
@@ -40,8 +37,8 @@ const INTIAL_VALUESVERIFY = {
 };
 
 export default function SignUp() {
-  const isactive = nextLocalStorage()?.getItem("user_status") ?? "";
-  const user_email = nextLocalStorage()?.getItem("user_email") ?? "";
+  const isactive = nextSessionStorage()?.getItem("user_status") ?? "";
+  const user_email = nextSessionStorage()?.getItem("user_email") ?? "";
 
   const { showToast } = useToast();
 
@@ -240,13 +237,15 @@ export default function SignUp() {
                     />
                     <Spacer size="xs" />
 
-                    <div
-                      className="flex justify-end items-center"
-                      onClick={toggleForgetPassword}
-                    >
-                      <p className="my-4  text-base font-medium text-gray-900 dark:text-white">
-                        Forget Password?
-                      </p>
+                    <div className="flex justify-end items-center">
+                      <button>
+                        <p
+                          onClick={toggleForgetPassword}
+                          className="my-4  text-base font-medium text-gray-900 dark:text-white"
+                        >
+                          Forget Password?
+                        </p>
+                      </button>
                     </div>
 
                     <div className="flex justify-center items-center">

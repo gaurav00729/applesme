@@ -17,3 +17,10 @@ export const getEnviromentVariable = (): string | undefined => {
     return subdomain;
   }
 };
+
+
+export const nextSessionStorage = (): Storage | void => {
+  if (isBrowser()) {
+    return window.sessionStorage;
+  }
+};

@@ -17,6 +17,7 @@ import useApi from "@/hooks/useApi";
 import { SignupApi } from "@/apis";
 import { jwtDecode } from "jwt-decode";
 import { User } from "@/types";
+import useToast from "@/hooks/useToast";
 
 const INTIAL_VALUES = {
   business_name: "",
@@ -30,6 +31,7 @@ export default function SignUp() {
   const { setAuthToken, setUser } = useStore();
 
   const { makeApiCall } = useApi();
+  const { showToast } = useToast();
 
   const navigateToHomePage = React.useCallback(() => {
     router.replace("/");
@@ -48,15 +50,22 @@ export default function SignUp() {
             response?.status == true &&
             response?.user_status == "inactive_user"
           ) {
-            localStorage.setItem("user_status", "inactive_user");
-            localStorage.setItem("user_email", email);
+            sessionStorage.setItem("user_status", "inactive_user");
+            sessionStorage.setItem("user_email", email);
+            showToast("OTP Sent", { type: "success" });
             navigateToEnterOTP();
           } else {
+            showToast("Account already present! Please Login!", {
+              type: "error",
+            });
+            sessionStorage.removeItem("user_status");
+            sessionStorage.removeItem("user_email");
             navigateToEnterOTP();
           }
           return true;
         })
         .catch((error) => {
+          showToast("Some error occurred!", { type: "error" });
           console.error("Login Error:- ", error);
           return false;
         })
@@ -67,10 +76,16 @@ export default function SignUp() {
 
   const validationSchema = Yup.object().shape({
     business_name: Yup.string().required("Business Name is required"),
-    mobile: Yup.string().required("Mobile Number is required"),
+    mobile: Yup.string()
+      .required("Mobile Number is required")
+      .matches(/^[0-9]{10}$/, {
+        message:
+          "Mobile Number must be exactly 10 digits and contain only numbers",
+        excludeEmptyString: true,
+      }),
     email: Yup.string()
-      .email("Invalid  email format")
-      .required(" Email is required"),
+      .email("Invalid email format")
+      .required("Email is required"),
     business_type: Yup.string().required("Business Type is required"),
   });
 
