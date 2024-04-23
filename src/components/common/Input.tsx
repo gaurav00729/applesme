@@ -50,7 +50,7 @@ export default function Input({
   return (
     <>
       {label !== undefined && (
-        <label className="block mb-2 text-sm font-medium text-gray-900 ">
+        <label className="block mb-2 text-sm font-roboto font-medium text-gray-900 ">
           {label}
         </label>
       )}
@@ -68,10 +68,10 @@ export default function Input({
         </p>
       )}
       {success !== undefined && (
-        <p className="mt-2 text-sm text-green-600 ">{success}</p>
+        <p className="mt-2 text-sm text-green-600 font-roboto ">{success}</p>
       )}
       {meta.touched && meta.error && (
-        <p className="mt-2 text-sm text-red-600 ">{error ?? meta.error}</p>
+        <p className="mt-2 text-sm text-red-600  font-roboto">{error ?? meta.error}</p>
       )}
     </>
   );

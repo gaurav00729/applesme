@@ -28,7 +28,8 @@ export default function DashHeader() {
 
   const handleLogout = React.useCallback(() => {
     localStorage.clear();
-    router.replace("/login");
+    sessionStorage.clear();
+    router.replace("/signup");
   }, [router]);
 
   return (
@@ -54,19 +55,54 @@ export default function DashHeader() {
           <DropdownMenu
             aria-label="Profile Actions"
             variant="flat"
-            className="bg-cyan-50 border rounded-md"
+            className="bg-cyan-50  border rounded-md"
           >
             <DropdownItem key="profile" className="h-14 gap-2 ">
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold">apple.com</p>
             </DropdownItem>
-            <DropdownItem key="settings">My Settings</DropdownItem>
-            <DropdownItem key="team_settings">Team Settings</DropdownItem>
-            <DropdownItem key="analytics">Analytics</DropdownItem>
-            <DropdownItem key="system">System</DropdownItem>
-            <DropdownItem key="configurations">Configurations</DropdownItem>
-            <DropdownItem key="help_and_feedback">Help & Feedback</DropdownItem>
-            <DropdownItem key="logout" color="danger" onClick={handleLogout}>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="settings"
+            >
+              My Settings
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="team_settings"
+            >
+              Team Settings
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="analytics"
+            >
+              Analytics
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="system"
+            >
+              System
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="configurations"
+            >
+              Configurations
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="help_and_feedback"
+            >
+              Help & Feedback
+            </DropdownItem>
+            <DropdownItem
+              className="text-black font-roboto text-base"
+              key="logout"
+              color="danger"
+              onClick={handleLogout}
+            >
               Log Out
             </DropdownItem>
           </DropdownMenu>

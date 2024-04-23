@@ -18,7 +18,7 @@ import {
 import useApi from "@/hooks/useApi";
 import { jwtDecode } from "jwt-decode";
 import { User } from "@/types";
-import { nextLocalStorage, nextSessionStorage } from "@/utils/nextLocalStorage";
+import { nextSessionStorage } from "@/utils/nextLocalStorage";
 import useToast from "@/hooks/useToast";
 
 const INTIAL_VALUESLOGIN = {
@@ -213,9 +213,9 @@ export default function SignUp() {
 
   return (
     <section className="bg-white ">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between 0">
         <div className="w-full md:w-1/2 hidden md:block">
-          <div className="bg-gray-200 h-screen flex items-center justify-center">
+          <div className=" h-screen  ">
             <div
               className="w-full h-full bg-center bg-no-repeat bg-cover"
               style={{
@@ -224,27 +224,27 @@ export default function SignUp() {
             ></div>
           </div>
         </div>
-        <div className="w-full md:w-1/2  flex flex-col justify-center  ">
-          <div className=" flex w-full flex-col justify-center items-center">
+        <div className="w-full md:w-1/2 ">
+          <div className=" flex w-full flex-col items-center">
             <Image
               src={logo}
               alt="banner"
               height={40}
               objectFit="cover"
-              className="cursor-pointer transfor  "
+              className="cursor-pointer transfor mt-5 "
             />
-            <p className="my-4 text-lg  font-bold  text-gray-900 ">
+            <p className="my-4 text-lg  font-medium font-roboto  text-gray-900 ">
               Apple SME Lease Program
             </p>
           </div>
           {!password ? (
             <div className=" px-20 ">
-              <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-6 border border-gray-500 rounded-2xl ">
-                <div className=" flex w-full justify-center items-center">
-                  <h2 className="mb-2 text-xl font-bold text-gray-900 ">
-                    Login
-                  </h2>
-                </div>
+             <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
+              <div className=" flex w-full justify-center items-center">
+                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
+                  Login
+                </h2>
+              </div>
 
                 <Formik
                   initialValues={INTIAL_VALUESLOGIN}
@@ -274,7 +274,7 @@ export default function SignUp() {
                       <button>
                         <p
                           onClick={toggleForgetPassword}
-                          className="my-4  text-base font-medium text-gray-900 "
+                          className="my-4 font-roboto  text-base font-normal text-gray-900 "
                         >
                           Forget Password?
                         </p>
@@ -286,7 +286,7 @@ export default function SignUp() {
                         <button
                           disabled
                           type="button"
-                          className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2  inline-flex items-center"
+                          className="text-white bg-blue-700 font-roboto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2  inline-flex items-center"
                         >
                           <LoadingIcon />
                           Loading...
@@ -294,14 +294,14 @@ export default function SignUp() {
                       ) : (
                         <button
                           type="submit"
-                          className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
+                          className="px-5 py-2.5 text-sm font-roboto font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
                         >
                           Submit
                         </button>
                       )}
                     </div>
                     <div className="flex justify-center items-center">
-                      <p className="my-4  text-base font-medium text-gray-900 ">
+                      <p className="my-4  text-base font-roboto font-medium text-gray-900 ">
                         New Here? Signup
                       </p>
                     </div>
@@ -312,12 +312,12 @@ export default function SignUp() {
           ) : !otpSent ? (
             <div>
               <div className=" px-20 ">
-                <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-6 border border-gray-500 rounded-2xl ">
-                  <div className=" flex w-full justify-center items-center">
-                    <h2 className="mb-2 text-xl font-bold text-gray-900 ">
-                      Forget Password
-                    </h2>
-                  </div>
+              <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
+              <div className=" flex w-full justify-center items-center">
+                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
+                  Forget Password
+                </h2>
+              </div>
 
                   <Formik
                     initialValues={INTIAL_VALUESSENDOTPFORM}
@@ -366,12 +366,12 @@ export default function SignUp() {
             <div>
               <div>
                 <div className=" px-20 ">
-                  <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-6 border border-gray-500 rounded-2xl ">
-                    <div className=" flex w-full justify-center items-center">
-                      <h2 className="mb-2 text-xl font-bold text-gray-900 ">
-                        Verify Email
-                      </h2>
-                    </div>
+                <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
+              <div className=" flex w-full justify-center items-center">
+                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
+                  Veriy Email
+                </h2>
+              </div>
 
                     <Formik
                       initialValues={INTIAL_VALUESVERIFY}
@@ -399,7 +399,7 @@ export default function SignUp() {
 
                         <Input
                           label="Confirm Password"
-                          placeholder="confirm passowrd"
+                          placeholder="confirm password"
                           name="confirm_password"
                           type="password"
                         />
@@ -410,7 +410,7 @@ export default function SignUp() {
                             <button
                               disabled
                               type="button"
-                              className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
+                              className="text-white font-roboto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
                             >
                               <LoadingIcon />
                               Loading...
@@ -418,7 +418,7 @@ export default function SignUp() {
                           ) : (
                             <button
                               type="submit"
-                              className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center  "
+                              className="px-5 py-2.5 font-roboto text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center  "
                             >
                               Submit
                             </button>

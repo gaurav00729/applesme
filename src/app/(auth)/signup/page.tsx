@@ -37,6 +37,10 @@ export default function SignUp() {
     router.replace("/");
   }, [router]);
 
+  const gotoLoginPage = React.useCallback(() => {
+    router.replace("/login");
+  }, [router]);
+
   const navigateToEnterOTP = React.useCallback(() => {
     router.replace("/login");
   }, [router]);
@@ -54,14 +58,14 @@ export default function SignUp() {
             sessionStorage.setItem("user_email", email);
             showToast("OTP Sent", { type: "success" });
             navigateToEnterOTP();
-          } else if( response?.user_status == "active_user") {
+          } else if (response?.user_status == "active_user") {
             showToast("Account already present! Please Login!", {
               type: "error",
             });
             sessionStorage.removeItem("user_status");
             sessionStorage.removeItem("user_email");
             navigateToEnterOTP();
-          }else{
+          } else {
             sessionStorage.removeItem("user_status");
             sessionStorage.removeItem("user_email");
             navigateToEnterOTP();
@@ -95,9 +99,9 @@ export default function SignUp() {
 
   return (
     <section className="bg-white ">
-      <div className="flex flex-row justify-between">
+      <div className="flex flex-row justify-between ">
         <div className="w-full md:w-1/2 hidden md:block">
-          <div className="bg-gray-200 h-screen flex items-center justify-center">
+          <div className=" h-screen flex items-center justify-center">
             <div
               className="w-full h-full bg-center bg-no-repeat bg-cover"
               style={{
@@ -106,24 +110,24 @@ export default function SignUp() {
             ></div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 ">
-          <div className=" flex w-full flex-col justify-center items-center">
+        <div className="w-full md:w-1/2 0">
+          <div className=" flex w-full flex-col items-center">
             <Image
               src={logo}
               alt="banner"
               height={40}
               objectFit="cover"
-              className="cursor-pointer transfor  "
+              className="cursor-pointer transfor mt-5  "
             />
-            <p className="my-4 text-lg  font-bold  text-gray-900 ">
+            <p className="my-4 text-lg  font-medium font-roboto  text-gray-900 ">
               Apple SME Lease Program
             </p>
           </div>
 
           <div className=" px-20">
-            <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-6 border border-gray-500 rounded-2xl ">
+            <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
               <div className=" flex w-full justify-center items-center">
-                <h2 className="mb-2 text-xl font-bold text-gray-900 ">
+                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
                   Sign Up
                 </h2>
               </div>
@@ -178,7 +182,10 @@ export default function SignUp() {
                     )}
                   </div>
                   <div className="flex justify-center items-center">
-                    <p className="my-4  text-base font-medium text-gray-900">
+                    <p
+                      onClick={gotoLoginPage}
+                      className="my-4  text-base font-normal font-roboto text-gray-900"
+                    >
                       Already have a account? Login
                     </p>
                   </div>

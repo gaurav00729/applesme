@@ -5,10 +5,7 @@ import { Button } from "@nextui-org/react";
 import SidebarContent from "../../../components/pages/document/SidebarContent"; // Importing the component to display
 import {
   BanknoteIcon,
-  Check,
-  CheckCheckIcon,
-  ChevronRight,
-  Circle,
+
   MessageSquareText,
   MonitorSpeaker,
 } from "lucide-react";
@@ -23,7 +20,7 @@ const Documents = () => {
   return (
     <section>
       <div className="h-screen flex overflow-hidden">
-        <div className="hidden md:flex flex-col w-60 border-r border-gray-200 dark:border-gray-700">
+        <div className="hidden md:flex flex-col w-60 border-r border-gray-200 ">
           <div className="flex flex-1 flex-col overflow-auto">
             <div className="flex-1 flex flex-col gap-1.5">
               <Link
@@ -79,7 +76,7 @@ const Documents = () => {
                 Bank Statements
               </Link>
             </div>
-            <div className="border-t border-gray-200 dark:border-gray-700">
+            <div className="border-t border-gray-200 ">
               <Button
                 className="w-full justify-start text-left pl-4"
                 variant="ghost"
