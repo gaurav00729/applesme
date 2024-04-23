@@ -3,7 +3,7 @@ import useTokenAndRoleCheck from "@/hooks/useTokenCheck";
 import React from "react";
 
 const Home: React.FC = () => {
-  // useTokenAndRoleCheck();
+  useTokenAndRoleCheck();
 
   return (
     <div>

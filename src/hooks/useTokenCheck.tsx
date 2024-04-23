@@ -7,11 +7,9 @@ export default function useTokenAndRoleCheck() {
 
   React.useEffect(() => {
     const token = nextLocalStorage()?.getItem("authToken");
-    const role = nextLocalStorage()?.getItem("role");
 
-    if (!token || token === "" || !role || role === "") {
+    if (!token || token === "") {
       localStorage.removeItem("authToken");
-      localStorage.removeItem("role");
       router.replace("/login");
     }
   }, [router]);

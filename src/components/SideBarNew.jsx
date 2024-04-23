@@ -2,11 +2,14 @@
 import { MoreVertical, ChevronLast, ChevronFirst } from "lucide-react";
 import { useContext, createContext, useState } from "react";
 import Link from "next/link";
+import { nextLocalStorage } from "@/utils/nextLocalStorage";
 
 const SidebarContext = createContext();
 
 export default function Sidebar({ children, setExpandedMain }) {
   const [expanded, setExpanded] = useState(true);
+  const name = nextLocalStorage()?.getItem("name") ?? "";
+  const email = nextLocalStorage()?.getItem("email") ?? "";
 
   return (
     <div>
@@ -54,8 +57,10 @@ export default function Sidebar({ children, setExpandedMain }) {
               `}
             >
               <div className="leading-4">
-                <h4 className="font-semibold">John Doe</h4>
-                <span className="text-xs text-gray-600">johndoe@gmail.com</span>
+                <p> {name != "" ? name : ""}</p>
+                <span className="text-xs text-gray-600">
+                  <p> {email != "" ? email : ""}</p>
+                </span>
               </div>
               <MoreVertical size={20} />
             </div>

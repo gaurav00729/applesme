@@ -21,6 +21,8 @@ import {
 import useApi from "@/hooks/useApi";
 import { jwtDecode } from "jwt-decode";
 import { User } from "@/types";
+import { nextLocalStorage } from "@/utils/nextLocalStorage";
+import useToast from "@/hooks/useToast";
 
 const INTIAL_VALUESLOGIN = {
   email: "",
@@ -38,11 +40,20 @@ const INTIAL_VALUESVERIFY = {
 };
 
 export default function SignUp() {
-  const [loading, setLoading] = React.useState(false); // eslint-disable-line
-  const [password, setPassword] = React.useState(false); // eslint-disable-line
-  const [userEmail, setUserEmail] = React.useState(""); // eslint-disable-line
+  const isactive = nextLocalStorage()?.getItem("user_status") ?? "";
+  const user_email = nextLocalStorage()?.getItem("user_email") ?? "";
 
-  const [otpSent, setOtpSent] = React.useState(false); // eslint-disable-line
+  const { showToast } = useToast();
+
+  const [loading, setLoading] = React.useState(false); // eslint-disable-line
+  const [password, setPassword] = React.useState(
+    isactive == "inactive_user" ? true : false
+  ); // eslint-disable-line
+  const [userEmail, setUserEmail] = React.useState(user_email); // eslint-disable-line
+
+  const [otpSent, setOtpSent] = React.useState(
+    isactive == "inactive_user" ? true : false
+  ); // eslint-disable-line
 
   const { makeApiCall } = useApi();
 
@@ -74,17 +85,19 @@ export default function SignUp() {
           setUser(decode);
           setAuthToken(token);
           if (token) {
+            showToast("Successful", { type: "success" });
             navigateToHomePage();
           }
           return true;
         })
         .catch((error) => {
+          showToast("Failed", { type: "error" });
           console.error("Login Error:- ", error);
           return false;
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken, makeApiCall, setUser]
+    [navigateToHomePage, setAuthToken, makeApiCall, setUser, showToast]
   );
 
   const validationloginSchema = Yup.object().shape({
@@ -138,23 +151,27 @@ export default function SignUp() {
       )
         .then((response) => {
           console.log(response, "RESPONSE OF CONFIRM  PASSWORD AFTER OTP");
-          if (response?.status == 200) {
+          const { token }: { token: string } = response;
+          const decode: User = jwtDecode(token);
+          localStorage.setItem("authToken", token);
+          localStorage.setItem("user_id", `${decode.user_id}`);
+          localStorage.setItem("email", decode.email);
+          localStorage.setItem("name", decode.name);
+          setUser(decode);
+          setAuthToken(token);
+          if (token) {
             navigateToHomePage();
-          } else {
           }
-          navigateToHomePage();
 
           return true;
         })
         .catch((error) => {
-          navigateToHomePage();
-
           console.error("Login Error:- ", error);
           return false;
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, makeApiCall, userEmail]
+    [navigateToHomePage, makeApiCall, userEmail, setAuthToken]
   );
 
   const validationSchema = Yup.object().shape({

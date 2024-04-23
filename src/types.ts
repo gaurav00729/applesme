@@ -3,7 +3,6 @@ import { MenuItemProps } from "@nextui-org/react";
 export type User = {
   name: string;
   email: string;
-  role: string;
   user_id: number;
   exp: number;
 };

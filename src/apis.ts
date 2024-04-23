@@ -9,16 +9,11 @@ export const SignupApi = (
   email: string,
   mobile: string
 ) => {
-  const formData = new FormData();
-
-  formData.append("business_name", business_name);
-  formData.append("business_type", business_type);
-  formData.append("email", email);
-  formData.append("mobile", mobile);
-  return onePiece.post("/sign-up", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+  return onePiece.post("/sign-up", {
+    business_name,
+    business_type,
+    email,
+    mobile,
   });
 };
 
@@ -35,14 +30,7 @@ export const LoginApi = (email: string, password: string) => {
 };
 
 export const SendForgetPasswordOtpApi = (email: string) => {
-  const formData = new FormData();
-
-  formData.append("email", email);
-  return onePiece.post("/forget-password", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
-  });
+  return onePiece.post("/forget-password", { email });
 };
 
 export const ConfirmPasswordOtpApi = (
@@ -51,15 +39,10 @@ export const ConfirmPasswordOtpApi = (
   password: string,
   confirm_password: string
 ) => {
-  const formData = new FormData();
-  formData.append("email", email);
-  formData.append("verification_code", verification_code);
-  formData.append("password", password);
-  formData.append("confirm_password", confirm_password);
-
-  return onePiece.post("/verify-code", formData, {
-    headers: {
-      "Content-Type": "multipart/form-data",
-    },
+  return onePiece.post("/verify-code", {
+    email,
+    verification_code,
+    password,
+    confirm_password,
   });
 };

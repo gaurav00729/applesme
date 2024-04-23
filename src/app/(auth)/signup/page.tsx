@@ -35,21 +35,24 @@ export default function SignUp() {
     router.replace("/");
   }, [router]);
 
+  const navigateToEnterOTP = React.useCallback(() => {
+    router.replace("/login");
+  }, [router]);
   const handleSubmit = React.useCallback(
     ({ business_name, business_type, email, mobile }: typeof INTIAL_VALUES) => {
       return makeApiCall(SignupApi(business_name, business_type, email, mobile))
         .then((response) => {
           console.log(response, "RESPONSE OF SIGNUP");
-          const { token }: { token: string } = response;
-          const decode: User = jwtDecode(token);
-          localStorage.setItem("authToken", token);
-          localStorage.setItem("user_id", `${decode.user_id}`);
-          localStorage.setItem("email", decode.email);
-          localStorage.setItem("name", decode.name);
-          setUser(decode);
-          setAuthToken(token);
-          if (token) {
-            navigateToHomePage();
+
+          if (
+            response?.status == true &&
+            response?.user_status == "inactive_user"
+          ) {
+            localStorage.setItem("user_status", "inactive_user");
+            localStorage.setItem("user_email", email);
+            navigateToEnterOTP();
+          } else {
+            navigateToEnterOTP();
           }
           return true;
         })
@@ -59,7 +62,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken, makeApiCall, setUser]
+    [navigateToHomePage, setAuthToken, makeApiCall, setUser, navigateToEnterOTP]
   );
 
   const validationSchema = Yup.object().shape({

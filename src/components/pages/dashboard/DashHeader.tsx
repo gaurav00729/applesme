@@ -28,7 +28,7 @@ export default function DashHeader() {
 
   const handleLogout = React.useCallback(() => {
     localStorage.clear();
-    router.replace("/info");
+    router.replace("/login");
   }, [router]);
 
   return (
@@ -51,8 +51,12 @@ export default function DashHeader() {
               />
             </Link>
           </DropdownTrigger>
-          <DropdownMenu aria-label="Profile Actions" variant="flat" className="bg-cyan-50 border rounded-md">
-            <DropdownItem key="profile" className="h-14 gap-2 " >
+          <DropdownMenu
+            aria-label="Profile Actions"
+            variant="flat"
+            className="bg-cyan-50 border rounded-md"
+          >
+            <DropdownItem key="profile" className="h-14 gap-2 ">
               <p className="font-semibold">Signed in as</p>
               <p className="font-semibold">apple.com</p>
             </DropdownItem>
