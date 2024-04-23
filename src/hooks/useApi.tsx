@@ -11,9 +11,11 @@ export default function useApi() {
       return promise
         .then((response: AxiosResponse) => response.data)
         .catch((error: AxiosError) => {
+          console.log(error,"CATCH ERROR ")
           if (error.response?.status === 401) {
             localStorage.setItem("authToken", "");
             router.replace("/login");
+            throw error;
           } else {
             throw error;
           }

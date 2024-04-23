@@ -66,10 +66,7 @@ export default function SignUp() {
   }, []);
 
   const handleLoginSubmit = React.useCallback(
-    ({
-      email, // eslint-disable-line
-      password, // eslint-disable-line
-    }: typeof INTIAL_VALUESLOGIN) => {
+    ({ email, password }: typeof INTIAL_VALUESLOGIN) => {
       return makeApiCall(LoginApi(email, password))
         .then((response) => {
           console.log(response, "RESPONSE OF LOGIN API");
@@ -94,6 +91,14 @@ export default function SignUp() {
         .catch((error) => {
           showToast("Failed", { type: "error" });
           console.error("Login Error:- ", error);
+          showToast(
+            error?.response?.data?.message &&
+              error?.response?.data?.message != ""
+              ? error?.response?.data?.message
+              : "Error occurreds",
+            { type: "error" }
+          );
+
           return false;
         })
         .finally(() => setLoading(false));
