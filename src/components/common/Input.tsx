@@ -15,11 +15,11 @@ interface Props {
 
 const sizes = {
   defualt:
-    " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
+    " border border-gray-300 text-gray-900 text-sm rounded-lg font-roboto block w-full p-2.5 focus:outline-none ",
   large:
-    "block w-full p-4 text-gray-900 border border-gray-300 rounded-lg  sm:text-md focus:ring-blue-500 focus:border-blue-500 ",
+    "block w-full p-4 text-gray-900 border border-gray-300 font-roboto rounded-lg  sm:text-md focus:outline-none ",
   small:
-    "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg  sm:text-xs focus:ring-blue-500 focus:border-blue-500 ",
+    "block w-full p-2 text-gray-900 border border-gray-300 font-roboto rounded-lg  sm:text-xs focus:outline-none ",
 };
 
 export default function Input({
@@ -51,7 +51,7 @@ export default function Input({
     <>
       {label !== undefined && (
         <label
-          style={{ fontWeight: 400, fontSize: "20px", lineHeight: "24px" }}
+          style={{ fontWeight: 400, fontSize: "15px", lineHeight: "24px" }}
         >
           {label}
         </label>

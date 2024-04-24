@@ -213,9 +213,9 @@ export default function SignUp() {
 
   return (
     <section className="bg-white ">
-      <div className="flex flex-row justify-between 0">
+      <div className="flex flex-row justify-between ">
         <div className="w-full md:w-1/2 hidden md:block">
-          <div className=" h-screen  ">
+          <div className=" h-screen flex items-center justify-center">
             <div
               className="w-full h-full bg-center bg-no-repeat bg-cover"
               style={{
@@ -224,8 +224,10 @@ export default function SignUp() {
             ></div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 ">
-          <div className=" flex w-full flex-col items-center">
+        <div className="w-full md:w-1/2   ">
+          <Spacer size="xs" />
+
+          <div className=" flex w-full flex-col">
             <Image
               src={logo}
               alt="banner"
@@ -233,19 +235,23 @@ export default function SignUp() {
               objectFit="cover"
               className="cursor-pointer transfor mt-5 "
             />
-            <p className="my-4 text-lg  font-medium font-roboto  text-gray-900 ">
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "400",
+              }}
+              className=" self-center "
+            >
               Apple SME Lease Program
             </p>
+            <Spacer size="sm" />
           </div>
           {!password ? (
-            <div className=" px-20 ">
-             <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-              <div className=" flex w-full justify-center items-center">
-                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                  Login
-                </h2>
-              </div>
-
+            <div className="">
+              <div
+                style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                className=" mx-auto max-w-2xl "
+              >
                 <Formik
                   initialValues={INTIAL_VALUESLOGIN}
                   onSubmit={handleLoginSubmit}
@@ -255,55 +261,70 @@ export default function SignUp() {
                   enableReinitialize
                 >
                   <Form>
-                    <Input
-                      label="Registered Email"
-                      placeholder="Email"
-                      name="email"
-                    />
-                    <Spacer size="xs" />
-
-                    <Input
-                      label="Password"
-                      placeholder="Password"
-                      name="password"
-                      type="password"
-                    />
-                    <Spacer size="xs" />
-
-                    <div className="flex justify-end items-center">
-                      <button>
+                    <div className="px-10 mr-5 mx-auto max-w-2xl border  border-gray-500 rounded-2xl">
+                      <div className="flex w-full justify-center items-center">
                         <p
-                          onClick={toggleForgetPassword}
-                          className="my-4 font-roboto  text-base font-normal text-gray-900 "
+                          style={{
+                            fontSize: "24px",
+                            fontWeight: 400,
+                            lineHeight: "29px",
+                            paddingTop: "10px",
+                          }}
+                          className="my-2 text-xl font-normal font-roboto text-gray-900"
                         >
-                          Forget Password?
+                          Sign Up
                         </p>
-                      </button>
-                    </div>
+                      </div>
+                      <Input
+                        label="Registered Email"
+                        placeholder="Email"
+                        name="email"
+                      />
+                      <Spacer size="xs" />
 
-                    <div className="flex justify-center items-center">
-                      {loading ? (
-                        <button
-                          disabled
-                          type="button"
-                          className="text-white bg-blue-700 font-roboto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2  inline-flex items-center"
-                        >
-                          <LoadingIcon />
-                          Loading...
+                      <Input
+                        label="Password"
+                        placeholder="Password"
+                        name="password"
+                        type="password"
+                      />
+                      <Spacer size="xs" />
+
+                      <div className="flex justify-end items-center">
+                        <button>
+                          <p
+                            onClick={toggleForgetPassword}
+                            className="my-4 font-roboto  text-base font-normal text-gray-900 "
+                          >
+                            Forget Password?
+                          </p>
                         </button>
-                      ) : (
-                        <button
-                          type="submit"
-                          className="px-5 py-2.5 text-sm font-roboto font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
-                        >
-                          Submit
-                        </button>
-                      )}
-                    </div>
-                    <div className="flex justify-center items-center">
-                      <p className="my-4  text-base font-roboto font-medium text-gray-900 ">
-                        New Here? Signup
-                      </p>
+                      </div>
+
+                      <div className="flex justify-center items-center">
+                        {loading ? (
+                          <button
+                            disabled
+                            type="button"
+                            className="text-white bg-blue-700 font-roboto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2  inline-flex items-center"
+                          >
+                            <LoadingIcon />
+                            Loading...
+                          </button>
+                        ) : (
+                          <button
+                            type="submit"
+                            className="px-5 py-2.5 text-sm font-roboto font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
+                          >
+                            Submit
+                          </button>
+                        )}
+                      </div>
+                      <div className="flex justify-center items-center">
+                        <p className="my-4  text-base font-roboto font-medium text-gray-900 ">
+                          New Here? Signup
+                        </p>
+                      </div>
                     </div>
                   </Form>
                 </Formik>
@@ -312,12 +333,12 @@ export default function SignUp() {
           ) : !otpSent ? (
             <div>
               <div className=" px-20 ">
-              <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-              <div className=" flex w-full justify-center items-center">
-                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                  Forget Password
-                </h2>
-              </div>
+                <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
+                  <div className=" flex w-full justify-center items-center">
+                    <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
+                      Forget Password
+                    </h2>
+                  </div>
 
                   <Formik
                     initialValues={INTIAL_VALUESSENDOTPFORM}
@@ -366,12 +387,12 @@ export default function SignUp() {
             <div>
               <div>
                 <div className=" px-20 ">
-                <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-              <div className=" flex w-full justify-center items-center">
-                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                  Veriy Email
-                </h2>
-              </div>
+                  <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
+                    <div className=" flex w-full justify-center items-center">
+                      <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
+                        Veriy Email
+                      </h2>
+                    </div>
 
                     <Formik
                       initialValues={INTIAL_VALUESVERIFY}

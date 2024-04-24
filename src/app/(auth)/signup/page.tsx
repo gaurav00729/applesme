@@ -111,24 +111,24 @@ export default function SignUp() {
           </div>
         </div>
         <div className="w-full md:w-1/2   ">
-        <Spacer size="xs" />
+          <Spacer size="xs" />
 
           <div className=" flex w-full flex-col">
             <Image
               src={logo}
               alt="banner"
-              height={40}
+              height={50}
               objectFit="cover"
-              className="cursor-pointer transfor  self-center "
+              className="cursor-pointer transfor  self-center  ml-16 "
             />
             <Spacer size="xs" />
 
             <p
               style={{
-                fontSize: "24px",
+                fontSize: "18px",
                 fontWeight: "400",
               }}
-              className=" self-center "
+              className=" self-center ml-16 "
             >
               Apple SME Lease Program
             </p>
@@ -148,11 +148,14 @@ export default function SignUp() {
                   enableReinitialize
                 >
                   <Form>
-                    <div className="px-10 mr-5 mx-auto max-w-2xl border  border-gray-500 rounded-2xl">
+                    <div
+                      style={{ borderColor: "#DADADA",width:"80%" }}
+                      className="px-10 mr-5 mx-auto max-w-xl border   rounded-2xl"
+                    >
                       <div className="flex w-full justify-center items-center">
                         <p
                           style={{
-                            fontSize: "24px",
+                            fontSize: "18px",
                             fontWeight: 400,
                             lineHeight: "29px",
                             paddingTop: "10px",
@@ -200,13 +203,13 @@ export default function SignUp() {
                         <button
                           type="submit"
                           style={{ backgroundColor: "#4EB2EF" }}
-                          className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg "
+                          className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg ml-16 "
                         >
                           <p
                             style={{
                               paddingTop: 8,
                               paddingBottom: 8,
-                              fontSize: "24px",
+                              fontSize: "15px",
                               fontWeight: "400",
                               paddingLeft: 64,
                               paddingRight: 64,
@@ -221,17 +224,19 @@ export default function SignUp() {
                     </div>
                     <Spacer size="xs" />
 
-                    <div className="flex justify-center items-center">
-                      <p
-                        onClick={gotoLoginPage}
-                        style={{
-                          fontSize: 24,
-                          fontWeight: 400,
-                          textAlign: "center",
-                        }}
-                      >
-                        Already have a account? Login
-                      </p>
+                    <div className="flex justify-center items-center ml-16">
+                      <button>
+                        <p
+                          onClick={gotoLoginPage}
+                          style={{
+                            fontSize: 15,
+                            fontWeight: 400,
+                            textAlign: "center",
+                          }}
+                        >
+                          Already have a account? Login
+                        </p>
+                      </button>
                     </div>
                   </Form>
                 </Formik>
