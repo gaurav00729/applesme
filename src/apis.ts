@@ -71,3 +71,15 @@ export const UploadDocument = (
     },
   });
 };
+
+export const getDocumentsData = () => {
+  return onePiece.get(
+    "/document-details",
+    {
+      headers: {
+        Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+        mobile: localStorage.getItem("mobile"),
+      },
+    }
+  );
+};

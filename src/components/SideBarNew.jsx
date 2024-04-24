@@ -68,7 +68,7 @@ export default function Sidebar({ children, setExpandedMain }) {
                   <p> {email != "" ? email : ""}</p>
                 </span>
               </div>
-              <MoreVertical size={20} />
+              {/* <MoreVertical size={20} /> */}
             </div>
           </div>
         </nav>

@@ -9,6 +9,7 @@ import useToast from "@/hooks/useToast";
 import useApi from "@/hooks/useApi";
 
 const HomeContent = () => {
+  
   const [loading, setLoading] = React.useState(false);
   const { makeApiCall } = useApi();
   const { showToast } = useToast();
@@ -46,7 +47,7 @@ const HomeContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -57,15 +58,16 @@ const HomeContent = () => {
   return (
     <div className=" h-screen w-3/4 flex   ">
       <div className=" w-[80%] flex flex-col justify-start">
-        <p className="my-2 text-2xl font-normal font-roboto text-gray-900">
+        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
           Balance Sheet
         </p>
 
-        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
-          Kindly Upload Last 2 years Audited Balance Sheet
+        <p className="my-2 text-base font-normal font-roboto text-gray-900">
+          Kindly Upload Last 2 Years Audited Financials ( including Notes to
+          Accounts and Auditor’s Report )
         </p>
 
-        <div className="">
+        <div className="mt-5">
           <Formik
             initialValues={intial_values}
             onSubmit={handleSubmit}
@@ -169,7 +171,7 @@ const LayoutContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -180,14 +182,14 @@ const LayoutContent = () => {
   return (
     <div className=" h-screen w-3/4 flex   ">
       <div className=" w-[80%] flex flex-col justify-start">
-        <p className="my-2 text-2xl font-normal font-roboto text-gray-900">
+        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
           Upload all GST Filings
         </p>
 
-        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
+        <p className="my-2 text-base font-normal font-roboto text-gray-900">
           Kindly Upload all GST reports, minimum 12 months
         </p>
-        <div className="">
+        <div className="mt-5">
           <Formik
             initialValues={intial_values}
             onSubmit={handleSubmit}
@@ -259,7 +261,7 @@ const SettingsContent = () => {
   const { showToast } = useToast();
 
   const intial_values = {
-    file_type: "board_resolution",
+    file_type: "share_holding",
     document: null as FileList | File | null,
   };
 
@@ -291,7 +293,7 @@ const SettingsContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -302,14 +304,14 @@ const SettingsContent = () => {
   return (
     <div className=" h-screen w-3/4 flex   ">
       <div className=" w-[80%] flex flex-col justify-start">
-        <p className="my-2 text-2xl font-normal font-roboto text-gray-900">
-          Upload all Board Resolution
+        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
+          Upload all Share Holding Pattern
         </p>
 
-        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
-          Kindly Upload all Board Resolution
+        <p className="my-2 text-base font-normal font-roboto text-gray-900">
+          Kindly Upload all Share Holding Pattern
         </p>
-        <div className="">
+        <div className="mt-5">
           <Formik
             initialValues={intial_values}
             onSubmit={handleSubmit}
@@ -413,7 +415,7 @@ const LoanProfile = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -424,14 +426,23 @@ const LoanProfile = () => {
   return (
     <div className=" h-screen w-3/4 flex   ">
       <div className=" w-[80%] flex flex-col justify-start">
-        <p className="my-2 text-2xl font-normal font-roboto text-gray-900">
+        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
           Upload all Loan Document
         </p>
 
-        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
-          Kindly Upload all Loan Documents
+        <p className="my-2 text-base font-normal font-roboto text-gray-900">
+          Kindly upload all pre-existing loan details.{" "}
+          <a
+            href="https://storage.googleapis.com/sme_sampledocs/Loan%20Profile.xlsx"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-blue-500 underline hover:text-blue-700"
+          >
+            Click here to download sample format
+          </a>
         </p>
-        <div className="">
+
+        <div className="mt-5">
           <Formik
             initialValues={intial_values}
             onSubmit={handleSubmit}
@@ -535,7 +546,7 @@ const BankStatement = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -546,14 +557,14 @@ const BankStatement = () => {
   return (
     <div className=" h-screen w-3/4 flex   ">
       <div className=" w-[80%] flex flex-col justify-start">
-        <p className="my-2 text-2xl font-normal font-roboto text-gray-900">
+        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
           Upload all Bank Statements
         </p>
 
-        <p className="my-2 text-xl font-normal font-roboto text-gray-900">
-          Kindly Upload all Bank Statements
+        <p className="my-2 text-base font-normal font-roboto text-gray-900">
+          Kindly upload previous 1 year bank statements.{" "}
         </p>
-        <div className="">
+        <div className="mt-5">
           <Formik
             initialValues={intial_values}
             onSubmit={handleSubmit}
@@ -656,7 +667,7 @@ const Default = () => {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall,showToast]
+    [makeApiCall, showToast]
   );
 
   const validationSchema = Yup.object().shape({

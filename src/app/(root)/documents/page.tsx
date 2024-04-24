@@ -3,14 +3,45 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import SidebarContent from "../../../components/pages/document/SidebarContent"; // Importing the component to display
-import { BanknoteIcon, MessageSquareText, MonitorSpeaker } from "lucide-react";
+import {
+  BanknoteIcon,
+  MessageSquareText,
+  MonitorSpeaker,
+  CircleCheckBig,
+  Hourglass,
+  HourglassIcon,
+} from "lucide-react";
+import useApi from "@/hooks/useApi";
+import { getDocumentsData } from "@/apis";
+import { DocumentStatus } from "@/types";
 
 const Documents = () => {
-  const [selectedOption, setSelectedOption] = useState("Home"); // State to manage selected option
+  const [selectedOption, setSelectedOption] = useState("Home");
+  const [documentStatus, setDocumentStatus] = useState<DocumentStatus>({});
 
   const handleOptionClick = (option: any) => {
-    setSelectedOption(option); // Set selected option when clicked
+    setSelectedOption(option);
   };
+
+  const { makeApiCall } = useApi();
+
+  const getAllDataAGG = React.useCallback(() => {
+    return makeApiCall(getDocumentsData())
+      .then((response) => {
+        console.log(response.data, "ERS response of all dat");
+        setDocumentStatus(response?.data);
+        return true;
+      })
+      .catch((error) => {
+        console.error(error);
+        return false;
+      })
+      .finally(() => {});
+  }, [makeApiCall]);
+
+  React.useEffect(() => {
+    getAllDataAGG();
+  }, [makeApiCall]);
 
   return (
     <section>
@@ -27,8 +58,14 @@ const Documents = () => {
                 href="#"
                 onClick={() => handleOptionClick("Home")}
               >
-                <HomeIcon className="h-5 w-5" />
-                <p className="font-roboto">Balance Sheet</p>
+                {documentStatus && documentStatus?.balance_sheet == 1 ? (
+                  <CircleCheckBig />
+                ) : (
+                  <HourglassIcon />
+                )}
+                <p className="font-roboto text-base text-black">
+                  Balance Sheet
+                </p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -37,8 +74,12 @@ const Documents = () => {
                 href="#"
                 onClick={() => handleOptionClick("Gst")}
               >
-                <LayoutIcon className="h-5 w-5" />
-                <p className="font-roboto">GST</p>
+                {documentStatus && documentStatus?.gst == 1 ? (
+                  <CircleCheckBig />
+                ) : (
+                  <HourglassIcon />
+                )}
+                <p className="font-roboto text-base text-black">GST</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -47,8 +88,14 @@ const Documents = () => {
                 href="#"
                 onClick={() => handleOptionClick("Board")}
               >
-                <MessageSquareText className="h-5 w-5" />
-                <p className="font-roboto">Board Resolution</p>
+                {documentStatus && documentStatus?.share_holding == 1 ? (
+                  <CircleCheckBig />
+                ) : (
+                  <HourglassIcon />
+                )}
+                <p className="font-roboto text-base text-black">
+                  Share Holding Pattern
+                </p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -57,8 +104,12 @@ const Documents = () => {
                 href="#"
                 onClick={() => handleOptionClick("Loan")}
               >
-                <MonitorSpeaker className="h-5 w-5" />
-                <p className="font-roboto">Loan Profile</p>
+                {documentStatus && documentStatus?.loan == 1 ? (
+                  <CircleCheckBig />
+                ) : (
+                  <HourglassIcon />
+                )}
+                <p className="font-roboto text-base text-black">Loan Profile</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -67,8 +118,14 @@ const Documents = () => {
                 href="#"
                 onClick={() => handleOptionClick("Bank")}
               >
-                <BanknoteIcon className="h-5 w-5" />
-                <p className="font-roboto">Bank Statements</p>
+                {documentStatus && documentStatus?.bank_statement == 1 ? (
+                  <CircleCheckBig />
+                ) : (
+                  <HourglassIcon />
+                )}
+                <p className="font-roboto text-base text-black">
+                  Bank Statements
+                </p>
               </Link>
             </div>
             <div className="border-t border-gray-200 ">
@@ -84,7 +141,6 @@ const Documents = () => {
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
           <div className="flex-1 flex flex-col gap-1.5">
             <div className="flex-1 flex items-center justify-center">
-              {/* Render the selected component */}
               {selectedOption && <SidebarContent option={selectedOption} />}
             </div>
           </div>
@@ -133,26 +189,6 @@ function LayoutIcon(props: any) {
       <rect width="18" height="18" x="3" y="3" rx="2" ry="2" />
       <line x1="3" x2="21" y1="9" y2="9" />
       <line x1="9" x2="9" y1="21" y2="9" />
-    </svg>
-  );
-}
-
-function SettingsIcon(props: any) {
-  return (
-    <svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z" />
-      <circle cx="12" cy="12" r="3" />
     </svg>
   );
 }

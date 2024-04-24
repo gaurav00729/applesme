@@ -2,11 +2,10 @@ import { gradients } from "@/assets/colors";
 
 export default function About() {
   return (
-    <div>
-      <div
-        className="flex flex-col min-h-screen "
-        style={{ background: gradients.gradientbackground }}
-      ></div>
+    <div className="w-[90%] h-screen flex justify-center items-center">
+      <h1 className="text-2xl font-semibold font-roboto  text-black ">
+        Coming Soon
+      </h1>
     </div>
   );
 }

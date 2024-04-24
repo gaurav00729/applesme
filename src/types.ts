@@ -15,6 +15,15 @@ export type StoreType = {
   setUser: (user: User) => void;
 };
 
+//get documents status
+export type DocumentStatus = {
+  balance_sheet?: string | number;
+  gst?: string | number;
+  share_holding?: string | number;
+  loan?: string | number;
+  bank_statement?: string | number;
+};
+
 export type DeviceInfoType = {
   ADP: string;
   AgentName: string;
