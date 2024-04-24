@@ -112,7 +112,6 @@ export default function SignUp() {
         </div>
         <div className="w-full md:w-1/2   ">
           <Spacer size="xs" />
-
           <div className=" flex w-full flex-col">
             <Image
               src={logo}
@@ -128,7 +127,7 @@ export default function SignUp() {
                 fontSize: "18px",
                 fontWeight: "400",
               }}
-              className=" self-center ml-16 "
+              className=" self-center ml-16 font-roboto"
             >
               Apple SME Lease Program
             </p>
@@ -149,7 +148,7 @@ export default function SignUp() {
                 >
                   <Form>
                     <div
-                      style={{ borderColor: "#DADADA",width:"80%" }}
+                      style={{ borderColor: "#DADADA", width: "80%" }}
                       className="px-10 mr-5 mx-auto max-w-xl border   rounded-2xl"
                     >
                       <div className="flex w-full justify-center items-center">
@@ -192,12 +191,25 @@ export default function SignUp() {
                       {loading ? (
                         <button
                           disabled
-                          type="button"
                           style={{ backgroundColor: "#4EB2EF" }}
-                          className="text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center mr-2   inline-flex items-center"
+                          type="button"
+                          className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center mr-2   inline-flex items-center"
                         >
                           <LoadingIcon />
-                          Loading...
+                          <p
+                            style={{
+                              paddingTop: 8,
+                              paddingBottom: 8,
+                              fontSize: "15px",
+                              fontWeight: "400",
+                              paddingLeft: 64,
+                              paddingRight: 64,
+                              color: "#fff",
+                              textAlign: "center",
+                            }}
+                          >
+                            Loading ...
+                          </p>
                         </button>
                       ) : (
                         <button

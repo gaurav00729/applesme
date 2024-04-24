@@ -51,7 +51,7 @@ export default function Input({
     <>
       {label !== undefined && (
         <label
-          style={{ fontWeight: 400, fontSize: "15px", lineHeight: "24px" }}
+          style={{ fontWeight: 400, fontSize: "15px", lineHeight: "24px",color:"#000000" }}
         >
           {label}
         </label>

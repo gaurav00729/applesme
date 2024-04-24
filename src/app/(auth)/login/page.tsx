@@ -213,7 +213,7 @@ export default function SignUp() {
 
   return (
     <section className="bg-white ">
-      <div className="flex flex-row justify-between ">
+      <div className="flex flex-row justify-between 0">
         <div className="w-full md:w-1/2 hidden md:block">
           <div className=" h-screen flex items-center justify-center">
             <div
@@ -224,30 +224,31 @@ export default function SignUp() {
             ></div>
           </div>
         </div>
-        <div className="w-full md:w-1/2   ">
+        <div className="w-full md:w-1/2 ">
           <Spacer size="xs" />
-
           <div className=" flex w-full flex-col">
             <Image
               src={logo}
               alt="banner"
-              height={40}
+              height={50}
               objectFit="cover"
-              className="cursor-pointer transfor mt-5 "
+              className="cursor-pointer transfor  self-center  ml-16 "
             />
+            <Spacer size="xs" />
+
             <p
               style={{
-                fontSize: "24px",
+                fontSize: "18px",
                 fontWeight: "400",
               }}
-              className=" self-center "
+              className=" self-center ml-16 font-roboto"
             >
               Apple SME Lease Program
             </p>
             <Spacer size="sm" />
           </div>
           {!password ? (
-            <div className="">
+            <div>
               <div
                 style={{ paddingLeft: "30px", paddingRight: "30px" }}
                 className=" mx-auto max-w-2xl "
@@ -261,18 +262,21 @@ export default function SignUp() {
                   enableReinitialize
                 >
                   <Form>
-                    <div className="px-10 mr-5 mx-auto max-w-2xl border  border-gray-500 rounded-2xl">
+                    <div
+                      style={{ borderColor: "#DADADA", width: "80%" }}
+                      className="px-10 mr-5 mx-auto max-w-xl border   rounded-2xl"
+                    >
                       <div className="flex w-full justify-center items-center">
                         <p
                           style={{
-                            fontSize: "24px",
+                            fontSize: "18px",
                             fontWeight: 400,
                             lineHeight: "29px",
                             paddingTop: "10px",
                           }}
                           className="my-2 text-xl font-normal font-roboto text-gray-900"
                         >
-                          Sign Up
+                          Log In
                         </p>
                       </div>
                       <Input
@@ -289,42 +293,83 @@ export default function SignUp() {
                         type="password"
                       />
                       <Spacer size="xs" />
+                    </div>
+                    <Spacer size="sm" />
 
-                      <div className="flex justify-end items-center">
-                        <button>
+                    <div className="flex justify-end items-center">
+                      <button>
+                        <p
+                          onClick={toggleForgetPassword}
+                          className="my-4 font-roboto  text-base font-normal text-gray-900 "
+                        >
+                          Forget Password?
+                        </p>
+                      </button>
+                    </div>
+
+                    <div className="flex justify-center items-center">
+                      {loading ? (
+                        <button
+                          disabled
+                          style={{ backgroundColor: "#4EB2EF" }}
+                          type="button"
+                          className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg ml-16 "
+                        >
+                          <LoadingIcon />
                           <p
-                            onClick={toggleForgetPassword}
-                            className="my-4 font-roboto  text-base font-normal text-gray-900 "
+                            style={{
+                              paddingTop: 8,
+                              paddingBottom: 8,
+                              fontSize: "15px",
+                              fontWeight: "400",
+                              paddingLeft: 64,
+                              paddingRight: 64,
+                              color: "#fff",
+                              textAlign: "center",
+                            }}
                           >
-                            Forget Password?
+                            Loading ...
                           </p>
                         </button>
-                      </div>
-
-                      <div className="flex justify-center items-center">
-                        {loading ? (
-                          <button
-                            disabled
-                            type="button"
-                            className="text-white bg-blue-700 font-roboto hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2  inline-flex items-center"
-                          >
-                            <LoadingIcon />
-                            Loading...
-                          </button>
-                        ) : (
-                          <button
-                            type="submit"
-                            className="px-5 py-2.5 text-sm font-roboto font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
+                      ) : (
+                        <button
+                          type="submit"
+                          style={{ backgroundColor: "#4EB2EF" }}
+                          className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg ml-16 "
+                        >
+                          <p
+                            style={{
+                              paddingTop: 8,
+                              paddingBottom: 8,
+                              fontSize: "15px",
+                              fontWeight: "400",
+                              paddingLeft: 64,
+                              paddingRight: 64,
+                              color: "#fff",
+                              textAlign: "center",
+                            }}
                           >
                             Submit
-                          </button>
-                        )}
-                      </div>
-                      <div className="flex justify-center items-center">
-                        <p className="my-4  text-base font-roboto font-medium text-gray-900 ">
+                          </p>
+                        </button>
+                      )}
+                    </div>
+                    <Spacer size="xs" />
+
+                    <div className="flex justify-center items-center ml-16">
+                      <button>
+                        {" "}
+                        <p
+                          style={{
+                            fontSize: 15,
+                            fontWeight: 400,
+                            textAlign: "center",
+                          }}
+                        >
+                          {" "}
                           New Here? Signup
                         </p>
-                      </div>
+                      </button>
                     </div>
                   </Form>
                 </Formik>
@@ -332,14 +377,11 @@ export default function SignUp() {
             </div>
           ) : !otpSent ? (
             <div>
-              <div className=" px-20 ">
-                <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-                  <div className=" flex w-full justify-center items-center">
-                    <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                      Forget Password
-                    </h2>
-                  </div>
-
+              <div className=" ">
+                <div
+                  style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                  className=" mx-auto max-w-2xl "
+                >
                   <Formik
                     initialValues={INTIAL_VALUESSENDOTPFORM}
                     onSubmit={handleSendOtpSubmit}
@@ -349,29 +391,77 @@ export default function SignUp() {
                     enableReinitialize
                   >
                     <Form>
-                      <Input
-                        label="Enter Email"
-                        placeholder="Email"
-                        name="email"
-                      />
+                      <div
+                        style={{ borderColor: "#DADADA", width: "80%" }}
+                        className="px-10 mr-5 mx-auto max-w-xl border   rounded-2xl"
+                      >
+                        <div className="flex w-full justify-center items-center">
+                          <p
+                            style={{
+                              fontSize: "18px",
+                              fontWeight: 400,
+                              lineHeight: "29px",
+                              paddingTop: "10px",
+                            }}
+                            className="my-2 text-xl font-normal font-roboto text-gray-900"
+                          >
+                            Forget Passoword
+                          </p>
+                        </div>
+                        <Input
+                          label="Enter Email"
+                          placeholder="Email"
+                          name="email"
+                        />
+                        <Spacer size="xs" />
+                      </div>
+
                       <Spacer size="xs" />
 
-                      <div className="flex justify-center items-center">
+                      <div className="flex justify-center items-center ml-16">
                         {loading ? (
                           <button
                             disabled
                             type="button"
-                            className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
+                            style={{ backgroundColor: "#4EB2EF" }}
+                            className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg ml-16 "
                           >
                             <LoadingIcon />
-                            Loading...
+                            <p
+                              style={{
+                                paddingTop: 8,
+                                paddingBottom: 8,
+                                fontSize: "15px",
+                                fontWeight: "400",
+                                paddingLeft: 64,
+                                paddingRight: 64,
+                                color: "#fff",
+                                textAlign: "center",
+                              }}
+                            >
+                              Loading...
+                            </p>
                           </button>
                         ) : (
                           <button
                             type="submit"
-                            className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center "
+                            style={{ backgroundColor: "#4EB2EF" }}
+                            className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg  "
                           >
-                            Submit
+                            <p
+                              style={{
+                                paddingTop: 8,
+                                paddingBottom: 8,
+                                fontSize: "15px",
+                                fontWeight: "400",
+                                paddingLeft: 64,
+                                paddingRight: 64,
+                                color: "#fff",
+                                textAlign: "center",
+                              }}
+                            >
+                              Submit
+                            </p>
                           </button>
                         )}
                       </div>
@@ -386,14 +476,11 @@ export default function SignUp() {
           ) : (
             <div>
               <div>
-                <div className=" px-20 ">
-                  <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-                    <div className=" flex w-full justify-center items-center">
-                      <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                        Veriy Email
-                      </h2>
-                    </div>
-
+                <div className=" ">
+                  <div
+                    style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                    className=" mx-auto max-w-2xl "
+                  >
                     <Formik
                       initialValues={INTIAL_VALUESVERIFY}
                       onSubmit={handleSendSetPassword}
@@ -403,50 +490,95 @@ export default function SignUp() {
                       enableReinitialize
                     >
                       <Form>
-                        <Input
-                          label="Enter OTP Received on your email"
-                          placeholder="Enter OTP"
-                          name="verification_code"
-                        />
+                        <div
+                          style={{ borderColor: "#DADADA", width: "80%" }}
+                          className="px-10 mr-5 mx-auto max-w-xl border   rounded-2xl"
+                        >
+                          <div className="flex w-full justify-center items-center">
+                            <p
+                              style={{
+                                fontSize: "18px",
+                                fontWeight: 400,
+                                lineHeight: "29px",
+                                paddingTop: "10px",
+                              }}
+                              className="my-2 text-xl font-normal font-roboto text-gray-900"
+                            >
+                              Veriy Email
+                            </p>
+                          </div>
+                          <Input
+                            label="Enter OTP Received on your email"
+                            placeholder="Enter OTP"
+                            name="verification_code"
+                          />
+                          <Spacer size="xs" />
+
+                          <Input
+                            label="Create Password"
+                            placeholder="enter Password"
+                            name="password"
+                            type="password"
+                          />
+                          <Spacer size="xs" />
+
+                          <Input
+                            label="Confirm Password"
+                            placeholder="confirm password"
+                            name="confirm_password"
+                            type="password"
+                          />
+                          <Spacer size="xs" />
+                        </div>
+
                         <Spacer size="xs" />
 
-                        <Input
-                          label="Create Password"
-                          placeholder="enter Password"
-                          name="password"
-                          type="password"
-                        />
-                        <Spacer size="xs" />
-
-                        <Input
-                          label="Confirm Password"
-                          placeholder="confirm password"
-                          name="confirm_password"
-                          type="password"
-                        />
-                        <Spacer size="xs" />
-
-                        <div className="flex justify-center items-center">
+                        <div className="flex justify-center items-center ml-16">
                           {loading ? (
                             <button
                               disabled
+                              style={{ backgroundColor: "#4EB2EF" }}
                               type="button"
-                              className="text-white font-roboto bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
+                              className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg ml-16 "
                             >
                               <LoadingIcon />
-                              Loading...
+                              <p
+                                style={{
+                                  paddingTop: 8,
+                                  paddingBottom: 8,
+                                  fontSize: "15px",
+                                  fontWeight: "400",
+                                  paddingLeft: 64,
+                                  paddingRight: 64,
+                                  color: "#fff",
+                                  textAlign: "center",
+                                }}
+                              >
+                                Loading ...
+                              </p>{" "}
                             </button>
                           ) : (
                             <button
+                              style={{ backgroundColor: "#4EB2EF" }}
                               type="submit"
-                              className="px-5 py-2.5 font-roboto text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center  "
+                              className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg  "
                             >
-                              Submit
+                              <p
+                                style={{
+                                  paddingTop: 8,
+                                  paddingBottom: 8,
+                                  fontSize: "15px",
+                                  fontWeight: "400",
+                                  paddingLeft: 64,
+                                  paddingRight: 64,
+                                  color: "#fff",
+                                  textAlign: "center",
+                                }}
+                              >
+                                Submit
+                              </p>
                             </button>
                           )}
-                        </div>
-                        <div className="flex justify-center items-center">
-                          <p className="my-4  text-base font-medium text-gray-900 "></p>
                         </div>
                       </Form>
                     </Formik>
