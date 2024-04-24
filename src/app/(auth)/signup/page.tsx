@@ -192,6 +192,7 @@ export default function SignUp() {
                         <button
                           disabled
                           style={{ backgroundColor: "#4EB2EF" }}
+
                           type="button"
                           className="text-white focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center mr-2   inline-flex items-center"
                         >

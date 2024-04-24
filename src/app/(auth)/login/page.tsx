@@ -292,10 +292,9 @@ export default function SignUp() {
                         name="password"
                         type="password"
                       />
-                      <Spacer size="xs" />
+                      <Spacer size="sm" />
                     </div>
                     <Spacer size="sm" />
-
                     <div className="flex justify-end items-center">
                       <button>
                         <p
@@ -413,10 +412,9 @@ export default function SignUp() {
                           placeholder="Email"
                           name="email"
                         />
-                        <Spacer size="xs" />
-                      </div>
-
-                      <Spacer size="xs" />
+                       <Spacer size="sm" />
+                    </div>
+                    <Spacer size="sm" />
 
                       <div className="flex justify-center items-center ml-16">
                         {loading ? (
@@ -528,10 +526,9 @@ export default function SignUp() {
                             name="confirm_password"
                             type="password"
                           />
-                          <Spacer size="xs" />
-                        </div>
-
-                        <Spacer size="xs" />
+                           <Spacer size="sm" />
+                    </div>
+                    <Spacer size="sm" />
 
                         <div className="flex justify-center items-center ml-16">
                           {loading ? (
