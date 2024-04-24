@@ -404,7 +404,7 @@ export default function SignUp() {
                             }}
                             className="my-2 text-xl font-normal font-roboto text-gray-900"
                           >
-                            Forget Passoword
+                            Forget Password
                           </p>
                         </div>
                         <Input
@@ -502,7 +502,7 @@ export default function SignUp() {
                               }}
                               className="my-2 text-xl font-normal font-roboto text-gray-900"
                             >
-                              Veriy Email
+                              Verify Email
                             </p>
                           </div>
                           <Input
