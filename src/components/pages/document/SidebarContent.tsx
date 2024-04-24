@@ -46,7 +46,7 @@ const HomeContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -169,7 +169,7 @@ const LayoutContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -291,7 +291,7 @@ const SettingsContent = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -413,7 +413,7 @@ const LoanProfile = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -535,7 +535,7 @@ const BankStatement = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({
@@ -656,7 +656,7 @@ const Default = () => {
         })
         .finally(() => setLoading(false));
     },
-    []
+    [makeApiCall,showToast]
   );
 
   const validationSchema = Yup.object().shape({

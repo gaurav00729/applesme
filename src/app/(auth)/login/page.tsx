@@ -147,7 +147,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [makeApiCall]
+    [makeApiCall,showToast]
   );
 
   const validationSchemaSendOtp = Yup.object().shape({
@@ -202,7 +202,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, makeApiCall, userEmail, setAuthToken]
+    [navigateToHomePage, makeApiCall, userEmail, setAuthToken,setUser,showToast]
   );
 
   const validationSchema = Yup.object().shape({

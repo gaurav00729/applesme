@@ -79,7 +79,7 @@ export default function SignUp() {
         })
         .finally(() => setLoading(false));
     },
-    [navigateToHomePage, setAuthToken, makeApiCall, setUser, navigateToEnterOTP]
+    [  makeApiCall, navigateToEnterOTP,showToast]
   );
 
   const validationSchema = Yup.object().shape({
