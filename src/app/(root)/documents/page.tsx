@@ -3,12 +3,7 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { Button } from "@nextui-org/react";
 import SidebarContent from "../../../components/pages/document/SidebarContent"; // Importing the component to display
-import {
-  BanknoteIcon,
-
-  MessageSquareText,
-  MonitorSpeaker,
-} from "lucide-react";
+import { BanknoteIcon, MessageSquareText, MonitorSpeaker } from "lucide-react";
 
 const Documents = () => {
   const [selectedOption, setSelectedOption] = useState(""); // State to manage selected option
@@ -19,7 +14,7 @@ const Documents = () => {
 
   return (
     <section>
-      <div className="h-screen flex overflow-hidden">
+      <div className="h-screen flex overflow-hidden ml-10">
         <div className="hidden md:flex flex-col w-60 border-r border-gray-200 ">
           <div className="flex flex-1 flex-col overflow-auto">
             <div className="flex-1 flex flex-col gap-1.5">
@@ -33,7 +28,7 @@ const Documents = () => {
                 onClick={() => handleOptionClick("Home")}
               >
                 <HomeIcon className="h-5 w-5" />
-                Balance Sheet
+                <p className="font-roboto">Balance Sheet</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -43,7 +38,7 @@ const Documents = () => {
                 onClick={() => handleOptionClick("Gst")}
               >
                 <LayoutIcon className="h-5 w-5" />
-                GST
+                <p className="font-roboto">GST</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -53,7 +48,7 @@ const Documents = () => {
                 onClick={() => handleOptionClick("Board")}
               >
                 <MessageSquareText className="h-5 w-5" />
-                Board Resolution
+                <p className="font-roboto">Board Resolution</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -63,7 +58,7 @@ const Documents = () => {
                 onClick={() => handleOptionClick("Loan")}
               >
                 <MonitorSpeaker className="h-5 w-5" />
-                Loan Profile
+                <p className="font-roboto">Loan Profile</p>
               </Link>
               <Link
                 className={`flex items-center justify-start p-4 gap-2 text-sm font-medium ${
@@ -73,7 +68,7 @@ const Documents = () => {
                 onClick={() => handleOptionClick("Bank")}
               >
                 <BanknoteIcon className="h-5 w-5" />
-                Bank Statements
+                <p className="font-roboto">Bank Statements</p>
               </Link>
             </div>
             <div className="border-t border-gray-200 ">

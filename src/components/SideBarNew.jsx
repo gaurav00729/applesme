@@ -84,7 +84,7 @@ export function SidebarItem({ icon, text, active, alert, href }) {
     <Link href={href}>
       <li
         className={`
-        relative flex items-center py-2 px-3 my-1
+        relative flex items-center py-3 px-3 my-1
         font-medium rounded-md cursor-pointer
         transition-colors group
       
