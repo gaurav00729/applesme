@@ -110,87 +110,132 @@ export default function SignUp() {
             ></div>
           </div>
         </div>
-        <div className="w-full md:w-1/2 0">
-          <div className=" flex w-full flex-col items-center">
+        <div className="w-full md:w-1/2   ">
+        <Spacer size="xs" />
+
+          <div className=" flex w-full flex-col">
             <Image
               src={logo}
               alt="banner"
               height={40}
               objectFit="cover"
-              className="cursor-pointer transfor mt-5  "
+              className="cursor-pointer transfor  self-center "
             />
-            <p className="my-4 text-lg  font-medium font-roboto  text-gray-900 ">
+            <Spacer size="xs" />
+
+            <p
+              style={{
+                fontSize: "24px",
+                fontWeight: "400",
+              }}
+              className=" self-center "
+            >
               Apple SME Lease Program
             </p>
-          </div>
+            <Spacer size="sm" />
 
-          <div className=" px-20">
-            <div className=" px-2 mr-5  mx-auto max-w-2xl lg:py-2 border border-gray-500 rounded-2xl ">
-              <div className=" flex w-full justify-center items-center">
-                <h2 className=" my-2 text-xl font-normal font-roboto text-gray-900 ">
-                  Sign Up
-                </h2>
-              </div>
-
-              <Formik
-                initialValues={INTIAL_VALUES}
-                onSubmit={handleSubmit}
-                validateOnBlur
-                validateOnChange
-                validationSchema={validationSchema}
-                enableReinitialize
+            <div className=" ">
+              <div
+                style={{ paddingLeft: "30px", paddingRight: "30px" }}
+                className=" mx-auto max-w-2xl "
               >
-                <Form>
-                  <Input
-                    label="Registered Business Name"
-                    placeholder="Name"
-                    name="business_name"
-                  />
-                  <Spacer size="xs" />
-                  <Input
-                    label="Business Type"
-                    placeholder="Business Type"
-                    name="business_type"
-                  />
-                  <Spacer size="xs" />
-                  <Input
-                    label="Phone Number"
-                    placeholder="Phone"
-                    name="mobile"
-                  />
-                  <Spacer size="xs" />
-                  <Input label="Email" placeholder="Email" name="email" />
-                  <Spacer size="xs" />
+                <Formik
+                  initialValues={INTIAL_VALUES}
+                  onSubmit={handleSubmit}
+                  validateOnBlur
+                  validateOnChange
+                  validationSchema={validationSchema}
+                  enableReinitialize
+                >
+                  <Form>
+                    <div className="px-10 mr-5 mx-auto max-w-2xl border  border-gray-500 rounded-2xl">
+                      <div className="flex w-full justify-center items-center">
+                        <p
+                          style={{
+                            fontSize: "24px",
+                            fontWeight: 400,
+                            lineHeight: "29px",
+                            paddingTop: "10px",
+                          }}
+                          className="my-2 text-xl font-normal font-roboto text-gray-900"
+                        >
+                          Sign Up
+                        </p>
+                      </div>
+                      <Input
+                        label="Registered Business Name"
+                        placeholder="Name"
+                        name="business_name"
+                      />
+                      <Spacer size="xs" />
+                      <Input
+                        label="Business Type"
+                        placeholder="Business Type"
+                        name="business_type"
+                      />
+                      <Spacer size="xs" />
+                      <Input
+                        label="Phone Number"
+                        placeholder="Phone"
+                        name="mobile"
+                      />
+                      <Spacer size="xs" />
+                      <Input label="Email" placeholder="Email" name="email" />
+                      <Spacer size="sm" />
+                    </div>
+                    <Spacer size="sm" />
 
-                  <div className="flex justify-center items-center">
-                    {loading ? (
-                      <button
-                        disabled
-                        type="button"
-                        className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2   inline-flex items-center"
+                    <div className="flex justify-center items-center">
+                      {loading ? (
+                        <button
+                          disabled
+                          type="button"
+                          style={{ backgroundColor: "#4EB2EF" }}
+                          className="text-white hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm  text-center mr-2   inline-flex items-center"
+                        >
+                          <LoadingIcon />
+                          Loading...
+                        </button>
+                      ) : (
+                        <button
+                          type="submit"
+                          style={{ backgroundColor: "#4EB2EF" }}
+                          className=" focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg "
+                        >
+                          <p
+                            style={{
+                              paddingTop: 8,
+                              paddingBottom: 8,
+                              fontSize: "24px",
+                              fontWeight: "400",
+                              paddingLeft: 64,
+                              paddingRight: 64,
+                              color: "#fff",
+                              textAlign: "center",
+                            }}
+                          >
+                            Submit
+                          </p>
+                        </button>
+                      )}
+                    </div>
+                    <Spacer size="xs" />
+
+                    <div className="flex justify-center items-center">
+                      <p
+                        onClick={gotoLoginPage}
+                        style={{
+                          fontSize: 24,
+                          fontWeight: 400,
+                          textAlign: "center",
+                        }}
                       >
-                        <LoadingIcon />
-                        Loading...
-                      </button>
-                    ) : (
-                      <button
-                        type="submit"
-                        className="px-5 py-2.5 text-sm font-medium text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center"
-                      >
-                        Submit
-                      </button>
-                    )}
-                  </div>
-                  <div className="flex justify-center items-center">
-                    <p
-                      onClick={gotoLoginPage}
-                      className="my-4  text-base font-normal font-roboto text-gray-900"
-                    >
-                      Already have a account? Login
-                    </p>
-                  </div>
-                </Form>
-              </Formik>
+                        Already have a account? Login
+                      </p>
+                    </div>
+                  </Form>
+                </Formik>
+              </div>
             </div>
           </div>
         </div>

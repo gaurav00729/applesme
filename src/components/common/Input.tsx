@@ -15,11 +15,11 @@ interface Props {
 
 const sizes = {
   defualt:
-    "bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
+    " border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 ",
   large:
-    "block w-full p-4 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-md focus:ring-blue-500 focus:border-blue-500 ",
+    "block w-full p-4 text-gray-900 border border-gray-300 rounded-lg  sm:text-md focus:ring-blue-500 focus:border-blue-500 ",
   small:
-    "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg bg-gray-50 sm:text-xs focus:ring-blue-500 focus:border-blue-500 ",
+    "block w-full p-2 text-gray-900 border border-gray-300 rounded-lg  sm:text-xs focus:ring-blue-500 focus:border-blue-500 ",
 };
 
 export default function Input({
@@ -50,7 +50,9 @@ export default function Input({
   return (
     <>
       {label !== undefined && (
-        <label className="block mb-2 text-sm font-roboto font-medium text-gray-900 ">
+        <label
+          style={{ fontWeight: 400, fontSize: "20px", lineHeight: "24px" }}
+        >
           {label}
         </label>
       )}
@@ -61,6 +63,9 @@ export default function Input({
         onChange={handleChange}
         value={meta.value}
         disabled={disabled}
+        style={{
+          marginTop: "4px",
+        }}
       />
       {helperText !== undefined && (
         <p id="helper-text" className="mt-2 text-sm text-gray-500 ">
@@ -71,7 +76,9 @@ export default function Input({
         <p className="mt-2 text-sm text-green-600 font-roboto ">{success}</p>
       )}
       {meta.touched && meta.error && (
-        <p className="mt-2 text-sm text-red-600  font-roboto">{error ?? meta.error}</p>
+        <p className="mt-2 text-sm text-red-600  font-roboto">
+          {error ?? meta.error}
+        </p>
       )}
     </>
   );
