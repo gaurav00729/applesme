@@ -46,3 +46,28 @@ export const ConfirmPasswordOtpApi = (
     confirm_password,
   });
 };
+
+export const UploadDocument = (
+  file_type: string,
+  file: File | FileList | null
+) => {
+  const formData = new FormData();
+
+  formData.append("file_type", file_type);
+  if (file instanceof File) {
+    formData.append("files", file);
+  } else if (file instanceof FileList) {
+    for (let i = 0; i < file.length; i++) {
+      formData.append("files", file[i]);
+    }
+  }
+  return onePiece.post("/document", formData, {
+    headers: {
+      "Content-Type": "multipart/form-data",
+      Authorization: `Bearer ${localStorage.getItem("authToken")}`,
+      mobile: localStorage.getItem("mobile"),
+      email: localStorage.getItem("email"),
+      user_id: localStorage.getItem("user_id"),
+    },
+  });
+};

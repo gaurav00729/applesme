@@ -75,11 +75,12 @@ export default function SignUp() {
             const { token }: { token: string } = response;
             const decode: User = jwtDecode(token);
             console.log(decode, "decodee");
-
             localStorage.setItem("authToken", token);
             localStorage.setItem("user_id", `${decode.user_id}`);
             localStorage.setItem("email", decode.email);
             localStorage.setItem("name", decode.name);
+            localStorage.setItem("mobile", decode.mobile);
+
 
             setUser(decode);
             setAuthToken(token);
@@ -178,6 +179,7 @@ export default function SignUp() {
             localStorage.setItem("user_id", `${decode.user_id}`);
             localStorage.setItem("email", decode.email);
             localStorage.setItem("name", decode.name);
+            localStorage.setItem("mobile", decode.mobile);
             setUser(decode);
             setAuthToken(token);
             if (token) {

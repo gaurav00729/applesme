@@ -6,7 +6,7 @@ import SidebarContent from "../../../components/pages/document/SidebarContent"; 
 import { BanknoteIcon, MessageSquareText, MonitorSpeaker } from "lucide-react";
 
 const Documents = () => {
-  const [selectedOption, setSelectedOption] = useState(""); // State to manage selected option
+  const [selectedOption, setSelectedOption] = useState("Home"); // State to manage selected option
 
   const handleOptionClick = (option: any) => {
     setSelectedOption(option); // Set selected option when clicked
@@ -83,11 +83,9 @@ const Documents = () => {
         </div>
         <div className="flex-1 flex flex-col min-w-0 overflow-hidden">
           <div className="flex-1 flex flex-col gap-1.5">
-            <div className="flex-1 flex items-center justify-center p-4">
-              <div className="text-center flex flex-col gap-2">
-                {/* Render the selected component */}
-                {selectedOption && <SidebarContent option={selectedOption} />}
-              </div>
+            <div className="flex-1 flex items-center justify-center">
+              {/* Render the selected component */}
+              {selectedOption && <SidebarContent option={selectedOption} />}
             </div>
           </div>
         </div>

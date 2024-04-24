@@ -5,6 +5,7 @@ export type User = {
   email: string;
   user_id: number;
   exp: number;
+  mobile: string;
 };
 
 export type StoreType = {
